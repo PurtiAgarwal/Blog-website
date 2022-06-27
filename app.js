@@ -16,11 +16,11 @@ const postSchema = {
 const Post = mongoose.model("Post", postSchema);
 
 const homeSection =
-    "Fancy text generator to convert your normal text into cool fancy text fonts that you can copy and paste to use anywhere you want.";
+    "This is the home section of the blog. This is where you can read all blogs.";
 const about =
-    "hey Fancy text generator to convert your normal text into cool fancy text fonts that you can copy and paste to use anywhere you want.";
+    "This is a Blog Website. You can add a Blog by adding /cpmpose in the url and view all the posts by clicking on 'Read More'.";
 const contact =
-    "wooo Fancy text generator to convert your normal text into cool fancy text fonts that you can copy and paste to use anywhere you want.";
+    "This is the contact section. You can contact me by emailing me at purtiagarwal88@gmail.com or you can contact me at purtiagarwal.me";
 
 app.set("view engine", "ejs");
 
