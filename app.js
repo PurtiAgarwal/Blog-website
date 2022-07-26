@@ -2,25 +2,21 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
+require("dotenv").config();
 
 const app = express();
 
-mongoose.connect(
-    "mongodb+srv://admin-purti:Purti*55@cluster0.chge8.mongodb.net/blogDB",
-    { useNewUrlParser: true }
-);
+mongoose.connect(process.env.URI, { useNewUrlParser: true });
 const postSchema = {
     title: String,
     content: String,
 }; // Schema for the post
 const Post = mongoose.model("Post", postSchema);
 
-const homeSection =
-    "This is the home section of the Blog Website. This is where you can view all blogs.";
 const about =
-    "This is a Blog Website. You can add a Blog by adding '/compose' in the url and view all the posts by clicking on 'Read More'.";
+    "This is a Blog Website. You can add a Blog and view all the posts by clicking on 'Read More'.";
 const contact =
-    "This is the contact section. You can contact me by emailing me at purtiagarwal88@gmail.com or you can contact me at purtiagarwal.me";
+    "You can contact me by emailing me at purtiagarwal88@gmail.com or you can contact me at purtiagarwal.me !";
 
 app.set("view engine", "ejs");
 
@@ -29,7 +25,7 @@ app.use(express.static("public"));
 
 app.get("/", function (req, res) {
     Post.find({}, function (err, posts) {
-        res.render("home", { write: homeSection, posts: posts });
+        res.render("home", { posts: posts });
     });
 });
 app.get("/about", function (req, res) {
